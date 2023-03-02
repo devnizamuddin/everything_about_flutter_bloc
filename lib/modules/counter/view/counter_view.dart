@@ -1,17 +1,18 @@
-import 'package:everything_about_flutter_bloc/modules/home/cubit/counter_cubit.dart';
-import 'package:everything_about_flutter_bloc/modules/home/cubit/counter_cubit_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+import '../cubit/counter_cubit.dart';
+import '../cubit/counter_cubit_state.dart';
+
+class CounterView extends StatelessWidget {
+  const CounterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     const textStyle = TextStyle(fontSize: 32);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Counter'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

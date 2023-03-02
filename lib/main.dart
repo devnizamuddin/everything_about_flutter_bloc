@@ -1,8 +1,8 @@
-import 'package:everything_about_flutter_bloc/modules/home/cubit/counter_cubit.dart';
+import 'modules/counter/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'modules/home/view/home_view.dart';
+import 'modules/counter/view/counter_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeView(),
+        home: const CounterView(),
       ),
     );
   }
