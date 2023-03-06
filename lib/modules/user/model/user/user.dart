@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'address.dart';
 import 'company.dart';
 
-class User {
+class UserModel {
   int? id;
   String? name;
   String? username;
@@ -13,7 +13,7 @@ class User {
   String? website;
   Company? company;
 
-  User({
+  UserModel({
     this.id,
     this.name,
     this.username,
@@ -29,9 +29,9 @@ class User {
     return 'User(id: $id, name: $name, username: $username, email: $email, address: $address, phone: $phone, website: $website, company: $company)';
   }
 
-  factory User.fromId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets(
+  factory UserModel.fromId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets(
       Map<String, dynamic> data) {
-    return User(
+    return UserModel(
       id: data['id'] as int?,
       name: data['name'] as String?,
       username: data['username'] as String?,
@@ -67,8 +67,8 @@ class User {
     };
   }
 
-  factory User.fromJson(String data) {
-    return User
+  factory UserModel.fromJson(String data) {
+    return UserModel
         .fromId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets(
             json.decode(data) as Map<String, dynamic>);
   }
@@ -76,7 +76,7 @@ class User {
   String toJson() => json.encode(
       toId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets());
 
-  User copyWith({
+  UserModel copyWith({
     int? id,
     String? name,
     String? username,
@@ -86,7 +86,7 @@ class User {
     String? website,
     Company? company,
   }) {
-    return User(
+    return UserModel(
       id: id ?? this.id,
       name: name ?? this.name,
       username: username ?? this.username,

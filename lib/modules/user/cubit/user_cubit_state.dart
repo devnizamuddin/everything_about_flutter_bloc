@@ -18,7 +18,7 @@ class UserCubitLoading extends UserCubitState {
 
 // ignore: must_be_immutable
 class UserCubitDataLoaded extends UserCubitState {
-  List<User> userList;
+  List<UserModel> userList;
 
   UserCubitDataLoaded({required this.userList});
 
