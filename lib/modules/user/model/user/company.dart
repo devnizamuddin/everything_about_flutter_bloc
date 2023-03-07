@@ -1,42 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Company {
   String? name;
   String? catchPhrase;
   String? bs;
-
-  Company({this.name, this.catchPhrase, this.bs});
-
-  @override
-  String toString() {
-    return 'Company(name: $name, catchPhrase: $catchPhrase, bs: $bs)';
-  }
-
-  factory Company.fromId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets(
-      Map<String, dynamic> data) {
-    return Company(
-      name: data['name'] as String?,
-      catchPhrase: data['catchPhrase'] as String?,
-      bs: data['bs'] as String?,
-    );
-  }
-
-  Map<String, dynamic>
-      toId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets() {
-    return {
-      'name': name,
-      'catchPhrase': catchPhrase,
-      'bs': bs,
-    };
-  }
-
-  factory Company.fromJson(String data) {
-    return Company
-        .fromId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets(
-            json.decode(data) as Map<String, dynamic>);
-  }
-  String toJson() => json.encode(
-      toId1NameLeanneGrahamUsernameBretEmailSincereAprilBizAddressStreetKulasLightSuiteApt556CityGwenboroughZipcode929983874GeoLat373159Lng811496Phone17707368031X56442WebsiteHildegardOrgCompanyNameRomagueraCronaCatchPhraseMultiLayeredClientServerNeuralNetBsHarnessRealTimeEMarkets());
+  Company({
+    this.name,
+    this.catchPhrase,
+    this.bs,
+  });
 
   Company copyWith({
     String? name,
@@ -48,6 +21,41 @@ class Company {
       catchPhrase: catchPhrase ?? this.catchPhrase,
       bs: bs ?? this.bs,
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'catchPhrase': catchPhrase,
+      'bs': bs,
+    };
+  }
+
+  factory Company.fromMap(Map<String, dynamic> map) {
+    return Company(
+      name: map['name'] != null ? map['name'] as String : null,
+      catchPhrase:
+          map['catchPhrase'] != null ? map['catchPhrase'] as String : null,
+      bs: map['bs'] != null ? map['bs'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Company.fromJson(String source) =>
+      Company.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() =>
+      'Company(name: $name, catchPhrase: $catchPhrase, bs: $bs)';
+
+  @override
+  bool operator ==(covariant Company other) {
+    if (identical(this, other)) return true;
+
+    return other.name == name &&
+        other.catchPhrase == catchPhrase &&
+        other.bs == bs;
   }
 
   @override
