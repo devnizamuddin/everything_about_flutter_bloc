@@ -28,6 +28,7 @@ class UserView extends StatelessWidget {
               ));
             } else if (state is UserCubitDataLoaded) {
               return ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 itemCount: state.userList.length,
                 itemBuilder: (BuildContext context, int index) {
                   UserModel userModel = state.userList[index];
