@@ -46,8 +46,17 @@ class UserView extends StatelessWidget {
                   );
                 },
               );
+            } else if (state is UserCubitError) {
+              return Center(
+                  child: Text(
+                state.message,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 24,
+                ),
+              ));
             } else {
-              return Text('data');
+              return Container();
             }
           },
         ),
