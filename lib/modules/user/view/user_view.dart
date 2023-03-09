@@ -1,3 +1,4 @@
+import 'package:everything_about_flutter_bloc/config/app_themes.dart';
 import 'package:everything_about_flutter_bloc/modules/user/cubit/user_cubit.dart';
 import 'package:everything_about_flutter_bloc/modules/user/cubit/user_cubit_state.dart';
 import 'package:everything_about_flutter_bloc/modules/user/model/user/user.dart';
@@ -11,28 +12,45 @@ class UserView extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<UserCubit>().getAllUserList();
     return Scaffold(
+      backgroundColor: AppThemes.scafoldBackground,
       appBar: AppBar(
         title: const Text('UserView'),
       ),
-      body: BlocBuilder<UserCubit, UserCubitState>(
-        builder: (context, state) {
-          if (state is UserCubitDataLoaded) {
-            return ListView.builder(
-              itemCount: state.userList.length,
-              itemBuilder: (BuildContext context, int index) {
-                UserModel userModel = state.userList[index];
-                return Card(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [Text('${userModel.name}')],
-                  ),
-                );
-              },
-            );
-          } else {
-            return Text('data');
-          }
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: BlocBuilder<UserCubit, UserCubitState>(
+          builder: (context, state) {
+            if (state is UserCubitLoading) {
+              return const Center(
+                  child: Text(
+                'Loading',
+                style: TextStyle(fontSize: 32),
+              ));
+            } else if (state is UserCubitDataLoaded) {
+              return ListView.builder(
+                itemCount: state.userList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  UserModel userModel = state.userList[index];
+                  return Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text('${userModel.name}'),
+                          const SizedBox(height: 10),
+                          Text('${userModel.username}'),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            } else {
+              return Text('data');
+            }
+          },
+        ),
       ),
     );
   }
