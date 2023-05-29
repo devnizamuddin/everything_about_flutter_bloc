@@ -1,6 +1,5 @@
 import 'package:everything_about_flutter_bloc/config/app_themes.dart';
-import 'package:everything_about_flutter_bloc/modules/user/cubit/user_cubit.dart';
-import 'package:everything_about_flutter_bloc/modules/user/cubit/user_cubit_state.dart';
+import 'package:everything_about_flutter_bloc/modules/user/bloc/user_bloc.dart';
 import 'package:everything_about_flutter_bloc/modules/user/model/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +9,7 @@ class UserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<UserCubit>().getAllUserList();
+    context.read<UserBloc>().add(GetUserList());
     return Scaffold(
       backgroundColor: AppThemes.scafoldBackground,
       appBar: AppBar(
@@ -18,15 +17,15 @@ class UserView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: BlocBuilder<UserCubit, UserCubitState>(
+        child: BlocBuilder<UserBloc, UserState>(
           builder: (context, state) {
-            if (state is UserCubitLoading) {
+            if (state is UserDataLoading) {
               return const Center(
                   child: Text(
                 'Loading',
                 style: TextStyle(fontSize: 32),
               ));
-            } else if (state is UserCubitDataLoaded) {
+            } else if (state is UserDataLoaded) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.userList.length,
@@ -47,10 +46,10 @@ class UserView extends StatelessWidget {
                   );
                 },
               );
-            } else if (state is UserCubitError) {
+            } else if (state is UserDataLoadingError) {
               return Center(
                   child: Text(
-                state.message,
+                state.errorMessage,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 24,
